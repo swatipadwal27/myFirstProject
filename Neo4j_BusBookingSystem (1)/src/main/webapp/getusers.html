@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/busList.css">
+     <script src="jquery-3.6.0.min.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+    <title>Bus Booking</title>
+    <title>Admin home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  background-image: url('/resources/img/busimg.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+</style>
+  </head>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/bookseat2.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+    <title> User List</title>
+  </head>
+  <body>
+  
+    <div class="header" >
+        <a href="adminHome">Home</a>
+        <a href="/getusers">show users</a>
+        <a href="bookingList.html">Booking List</a>
+        <a href="bushere">Bus Operation</a>
+        <div class="leftout"> <a href="logout">Logout</a></div>
+    </div>
+</nav>
+    <div class="row">
+  	<div class="col-md-6 offset-md-3">
+    <div class="main_card"  style="text-align: center;">
+         <table class="table table-dark" >
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>User Name</th>
+        <th>Password</th>
+           <th>Role</th>
+      
+      </tr>
+    </thead>
+    <tbody data-bind="foreach:user">
+      <tr>
+        <td data-bind="text:id"></td>
+        <td data-bind="text:username"></td>
+        <td data-bind="text:password"></td>
+        <td data-bind="text:role"></td>
+        
+      </tr>
+    </tbody>
+         </table>
+ 
+
+         </div>
+	</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> 
+ 	<script>
+          function vm(){
+		 
+   	var self=this;
+       self.user=ko.observableArray([]);
+       $.getJSON("http://192.168.1.193:8080/getusersmap",function(data){
+       	 self.user(data);
+       	 var name=data[0].username;
+      
+       });
+ 	  
+   }
+   ko.applyBindings(new vm());
+ 
+  </script>
+ 
+  </script>
+  
+  
+  
+  
+  </body>
+</html>

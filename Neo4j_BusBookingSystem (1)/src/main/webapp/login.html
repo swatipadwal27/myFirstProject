@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+    <!-- Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="/resources/css/bootstrap.min.css"	></link>
+    <link type="text/css" rel="stylesheet" href="/resources/css/loginstyle.css">
+ 	<spring:url value="../resources/css/loginStyle.css" var="styleCss"></spring:url>
+		<link rel="stylesheet" href="${styleCss}">
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+     <script>
+     	$(document).ready(function(){
+     		$("#roledata").change(function(){
+     			$.ajax({
+     				url:"adminHome",
+     				success:function(r){
+     					console.log("username enter");
+     				}
+     			})
+     		})
+     	})
+    </script>
+    <title>Login</title>
+    <style>
+body {
+  background-image: url('/resources/img/busimg.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+</style>
+  </head>
+  <body class="text-center">
+    <div class="header">
+        <a href="mainHome">Home</a>
+        <a href="#about">About</a>
+        <a href="contact">Contact</a>
+    </div>
+    
+    <form class="center " action="/login" method="POST" id="roledata">
+     <div class="imgcontainer">
+    
+      <img src="../resources/img/user.png" alt="Avatar" class="avatar">
+    </div>
+    	<div class="login-form">
+        <div class="container">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+        
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+                
+            <button type="submit">Login</button>
+       
+          <center><a href="/signUpPage">Sign Up</a></center>
+        </div>
+    	</div>
+          </form>
+
+   
+
+    <div class="footer"><h4>All Right Reserved 2021 </h4></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+   
+  </body>
+</html> 

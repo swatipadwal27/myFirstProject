@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/mainhome.css">
+     <script src="jquery-3.6.0.min.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+    <title>Bus Booking</title>
+    <title>Admin home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet"/>
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.css" rel="stylesheet"/>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+body {
+  background-image: url('/resources/img/busimg.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+</style>
+  </head>
+  <body>
+   
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+       
+  <a class="nav-item nav-link active"  href="mainHome">Home<span class="sr-only">(current)</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    	
+        <a class="nav-item nav-link" href="busBooking">BookTicket</a>
+      
+       <a class="nav-item nav-link" href="/contact"> Contact</a>
+        <a class="nav-item nav-link" href="userticket">Manage Booking</a>
+           <!--<a class="nav-item nav-link" href="/login"> login</a>-->
+        <div class="leftout"> <a href="/login">login</a></div>
+       
+     	
+       
+     
+                
+     
+    </div>
+  </div>
+</nav>
+ 
+    
+           
+<script>
+    var returnDisableLbl = '';
+</script>
+ <div class="main_card"  style="text-align: center;">
+<h1> Search Bus </h1> 
+ </div>
+<style type="text/css">
+	th { background-color: orange;color: white;}
+	h2 {color: #00BFFF;}
+	.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+    
+	<!--<form action="find" method="GET" >-->
+	
+	<table border="5" width="50%" class="center">
+		<tr>
+			<th> Search by pickup </th>
+				<th> Search by dropoff </th>
+			<th> Search by Name </th>
+			
+			<th> Select by Bus Type </th>
+			<th> Action </th>
+		</tr>
+		
+		<tr>
+			<td> <label for="pickup"><b></b></label>
+            <!--<select name="pickup" id="pickup" type="text" data-bind="click:pickup,options:busdetails,optionsText:'pickup',optionsValue:'pickup'">
+      		</select> <br> <br></td>-->
+      		  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name"></td>
+			<td> <label for="dropoff"><b></b></label>
+       <!--<select name="dropoff" id="dropoff" data-bind="click:dropoff,options:busdetails,optionsText:'dropoff',optionsValue:'dropoff'">
+                 </select> <br> <br> </td>-->
+                   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name"></td>
+			<td> <label for="busName"><b></b></label>
+            <!--<select name="busName" id="busName" data-bind="click:busName,options:busdetails,optionsText:'busName',optionsValue:'busName'">
+      		</select> <br> <br>  </td>-->
+      		  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name"></td>
+			<td>
+				<input type="radio" name="BUsType" value="AC">AC &nbsp;
+				<input type="radio" name="BUsType" value="Non-AC">Non-AC &nbsp;
+				<input type="radio" name="BUsType" value="Sleeper">Sleeper &nbsp;
+			</td>
+			<td> <input type="submit" value="SEARCH"> </td>
+		</tr>
+	</table>
+	 
+	<!--</form>-->
+	
+	<hr/>
+		<table border="5" width="58%" class="center" id="myTable" >
+			<tr>
+				<th> Bus ID </th>
+				<th> Bus Name </th>
+				<th> pick up </th>
+				<th> Drop off </th>
+				<th> Bus Time </th>
+				<th> Bus Type </th>
+			</tr>
+				<tbody data-bind="foreach:busdetails">
+			<tr>
+						
+		        <td data-bind="text:id"></td>
+		        <td data-bind="text:busName"></td>
+		        <td data-bind="text:pickup"></td>
+		        <td data-bind="text:dropoff"></td>
+		        <td data-bind="text:busTime"></td>
+		        <td data-bind="text:busType"></td>
+        
+			</tr>
+				</tbody>
+		</table>
+	
+<hr/>
+	
+	
+	
+     </div>  
+ 
+ 
+ 
+ 
+ </div>
+ 
+<script src="/resources/js/login.js"></script>
+<script src="/resources/js/select.js"></script>
+<script>
+	   function vm(){
+       	var self=this;
+           self.busdetails=ko.observableArray([]);
+           $.getJSON("http://192.168.1.193:8080/showAllBus",function(data){
+           	console.log(data);
+           	 self.busdetails(data);
+           	var jsonData = ko.toJSON(data);
+           });
+       }
+       ko.applyBindings(new vm());	
+	</script>
+	 <script >
+	  $(document).ready(function(){
+	  $("#myInput").on("keyup", function(){
+	  var value = $(this).val().toLowerCase();
+	  $("#myTable tr").filter(function(){
+	  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	  });
+	  });
+	});
+       </script>
+
+<footer class="C111_footer"><div class="C111_footerContainer"><section><div class="C111_copyright">Ⓒ 2021 All rights reserved</div></section></div></footer>
+
+
+ 
+     
+   
+  </body>
+</html>

@@ -1,0 +1,48 @@
+
+<pre lang="HTML"><table class="table">
+    <thead>
+        <tr>
+
+            <th>Work Date</th>
+            <th>Schedule Description</th>
+
+
+        </tr>
+    </thead>
+
+    <tbody data-bind="foreach: Timesheet_headers">
+        <tr>
+            <td data-bind="text: workDate"></td>
+
+            <td>
+                <div data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
+                    <span data-bind="text: StrSchedDesc"></span>
+                </div>
+                <div data-bind="visible: detailsEnabled">
+                    <span data-bind="text: StrTimeDesc"></span>
+                </div>
+            </td>       
+
+        </tr>
+    </tbody>
+</table>
+<script>
+var Action =
+{
+
+    Timesheet_headers: ko.observableArray([]),
+    workDate: ko.Observable(),
+    Schedule_description: ko.observable(),
+    StrSchedDesc: ko.observable(),
+    StrTimeDesc: ko.observable(),
+
+    detailsEnabled: ko.observable(false),
+    enableDetails: function() {
+        this.detailsEnabled(true);
+    },
+    disableDetails: function() {
+        this.detailsEnabled(false);
+    }
+}
+</script>
+</pre>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/bookseat2.css">
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+    <title> User Booking</title>
+<style>
+*,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+ q1{
+
+margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+	
+}
+
+
+.ticket {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  max-width: 24rem;
+}
+.ticket__header, .ticket__body, .ticket__footer {
+  padding: 1.25rem;
+  background-color: white;
+  border: 1px solid #abb5ba;
+  box-shadow: 0 2px 4px rgba(41, 54, 61, 0.25);
+}
+.ticket__header {
+  font-size: 1.5rem;
+  border-top: 0.25rem solid #dc143c;
+  border-bottom: none;
+  box-shadow: none;
+}
+.ticket__wrapper {
+  box-shadow: 0 2px 4px rgba(41, 54, 61, 0.25);
+  border-radius: 0.375em 0.375em 0 0;
+  overflow: hidden;
+}
+.ticket__divider {
+  position: relative;
+  height: 1rem;
+  background-color: white;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.ticket__divider::after {
+  content: '';
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  top: 0;
+  border-bottom: 2px dashed #e9ebed;
+}
+.ticket__notch {
+  position: absolute;
+  left: -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  overflow: hidden;
+}
+.ticket__notch::after {
+  content: '';
+  position: relative;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  right: 100%;
+  top: -50%;
+  border: 0.5rem solid white;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(41, 54, 61, 0.25);
+}
+.ticket__notch--right {
+  left: auto;
+  right: -0.5rem;
+}
+.ticket__notch--right::after {
+  right: 0;
+}
+.ticket__body {
+  border-bottom: none;
+  border-top: none;
+}
+.ticket__body > * + * {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ebed;
+}
+.ticket__section > * + * {
+  margin-top: 0.25rem;
+}
+.ticket__section > h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+.ticket__header, .ticket__footer {
+  font-weight: bold;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket__footer {
+  border-top: 2px dashed #e9ebed;
+  border-radius: 0 0 0.325rem 0.325rem;
+}
+</style>
+
+</head>
+<div class="header">
+        <a href="userHome">Home</a>
+        <a href="UserBusList">Bus</a>
+        <a href="busBooking">Booking</a>
+        <a href="contact">Contact</a>
+          <a href="first">first</a>
+        <a href="ticket">Show Ticket</a>
+        <div class="leftout"> <a href="logout">Logout</a></div>
+    </div>
+    <form class="center">
+        <div class="container">
+        
+        
+        </div>
+<body>
+<q1>
+<article class="ticket">
+  <header class="ticket__wrapper">
+    <div class="ticket__header">
+      2 🎟
+    </div>
+  </header>
+  <div class="ticket__divider">
+    <div class="ticket__notch"></div>
+    <div class="ticket__notch ticket__notch--right"></div>
+  </div>
+  <div class="ticket__body">
+    <section class="ticket__section">
+      <h4>Your Tickets</h4>
+       <table>
+    <thead>
+      <tr>
+        <th><span>Name:</span></th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach:busBooking">
+      <tr>
+        <td data-bind="text:name"></td>
+        
+      </tr>
+    </tbody>
+       </table>
+    </section>
+    <section class="ticket__section">
+       <table>
+    <thead>
+      <tr>
+        <th>Seat No:</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach:busBooking">
+      <tr>
+       
+        <td class="input1" data-bind="text:$data.seatid"></td>
+      </tr>
+    </tbody>
+       </table>
+    </section>
+    <section class="ticket__section">
+      <h3>Payment Method</h3>
+      <p>Mastercard **** 3232</p>
+    </section>
+  </div>
+  <footer class="ticket__footer">
+    
+    <table>
+    <thead>
+      <tr>
+        <th><span>Total Paid</span></th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach:busBooking">
+      <tr>
+       <td data-bind="text:price"></td>
+        
+      </tr>
+    </tbody>
+       </table>
+  </footer>
+</article>
+</q1>      
+
+
+ <script>
+          function vm(){
+		 
+   	var self=this;
+       self.busBooking=ko.observableArray([]);
+       $.getJSON("http://192.168.1.193:8080/showAllBooking",function(data){
+       	 self.busBooking(data);
+       	 var name1=data[0].busName;
+      
+       });
+ 	  
+   }
+   ko.applyBindings(new vm());
+ 
+  </script>
+</body>
+
+</html>

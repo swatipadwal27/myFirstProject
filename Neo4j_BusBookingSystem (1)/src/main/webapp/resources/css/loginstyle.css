@@ -1,0 +1,63 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+}
+.header a {
+    text-decoration: none;
+    padding: 10px 23px;
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    float: left;
+    color: white;
+}
+.header a:hover{
+    background: #ddd;
+}
+
+
+.cmpname{
+    text-align: center;
+    font-size: 30px;
+    top: 61px;
+    position: relative;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.container {
+    position: relative;
+    left: 10px;
+top: 107px;
+/* border: 3px solid red; */
+width: 50%;
+height: 198px
+  }
+  
+  

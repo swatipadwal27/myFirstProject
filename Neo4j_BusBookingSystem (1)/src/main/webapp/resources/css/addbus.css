@@ -1,0 +1,43 @@
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+}
+.header a {
+    text-decoration: none;
+    padding: 10px 23px;
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    float: left;
+    color: white;
+}
+.header a:hover{
+    background: #ddd;
+}
+.addmoviemanual{
+    text-align: center;
+    position: relative;
+    font-size: 40px;
+    /* border: 2px solid red; */
+    top: 50px;
+    width: 100%;
+    background-color: wheat;
+}
+.container {
+    position: relative;
+    left: 10px;
+top: 107px;
+/* border: 3px solid red; */
+width: 50%;
+height: 198px
+  }
